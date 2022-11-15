@@ -225,7 +225,7 @@
       "no_connect_dangling": "warning",
       "pin_not_connected": "error",
       "pin_not_driven": "error",
-      "pin_to_pin": "warning",
+      "pin_to_pin": "error",
       "power_pin_not_driven": "error",
       "similar_labels": "warning",
       "unannotated": "error",
@@ -320,6 +320,10 @@
     [
       "9538e4ed-27e6-4c37-b989-9859dc0d49e8",
       ""
+    ],
+    [
+      "d8954170-b388-4a35-b413-2466d3e29630",
+      "led_driving"
     ]
   ],
   "text_variables": {}
