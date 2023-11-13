@@ -3618,7 +3618,7 @@
       (reference "J1") (unit 1) (value "CtrlPins") (footprint "Connector_IDC:IDC-Header_2x08_P2.54mm_Latch_Vertical")
     )
     (path "/d8954170-b388-4a35-b413-2466d3e29630/21e95da4-8ce8-4343-9714-c99f9f7e4b4f"
-      (reference "L1") (unit 1) (value "330 uH") (footprint "Inductor_SMD:L_Fastron_PISN_Handsoldering")
+      (reference "L1") (unit 1) (value "330 uH") (footprint "Inductor_THT:L_Radial_D12.5mm_P7.00mm_Fastron_09HCP")
     )
     (path "/d8954170-b388-4a35-b413-2466d3e29630/cc4c837b-31d6-4b0c-b26d-56a4253facc2"
       (reference "Q1") (unit 1) (value "2N2219") (footprint "Package_TO_SOT_THT:TO-39-3")
