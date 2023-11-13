@@ -1729,6 +1729,11 @@
     (uuid ffc50c66-904c-4857-a75f-3d856475de45)
   )
 
+  (text "9.78x9.8mm\nW7.62mm\nP2.54mm" (at 146.05 184.15 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 6d341081-e485-4fd1-933c-ec15fba8c3bc)
+  )
+
   (global_label "LED3D" (shape input) (at 99.06 156.21 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left))
     (uuid 019b14f5-7eb3-440f-b240-ed7152997ff3)
@@ -3260,7 +3265,7 @@
     (uuid f06b4c80-8bdd-4c65-b5b3-37a824352c25)
     (property "Reference" "SW17" (id 0) (at 146.05 161.29 0))
     (property "Value" "Addr_DIP_SW" (id 1) (at 146.05 163.83 0))
-    (property "Footprint" "" (id 2) (at 146.05 173.99 0)
+    (property "Footprint" "Button_Switch_THT:SW_DIP_SPSTx03_Slide_9.78x9.8mm_W7.62mm_P2.54mm" (id 2) (at 146.05 163.83 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (id 3) (at 146.05 173.99 0)
@@ -3820,7 +3825,7 @@
       (reference "SW16") (unit 1) (value "SW_Push_LED") (footprint "Mission_DMX_Footprint_Library:MX-1.0u-LED")
     )
     (path "/f06b4c80-8bdd-4c65-b5b3-37a824352c25"
-      (reference "SW17") (unit 1) (value "Addr_DIP_SW") (footprint "")
+      (reference "SW17") (unit 1) (value "Addr_DIP_SW") (footprint "Button_Switch_THT:SW_DIP_SPSTx03_Slide_9.78x9.8mm_W7.62mm_P2.54mm")
     )
     (path "/d8954170-b388-4a35-b413-2466d3e29630/768e54a4-0be3-4ed7-89c5-2418a312467b"
       (reference "U1") (unit 1) (value "LM2575-3.3BT") (footprint "Package_TO_SOT_THT:TO-220-5_Vertical")
