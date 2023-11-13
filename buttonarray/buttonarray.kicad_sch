@@ -7,7 +7,7 @@
   (title_block
     (title "Mission DMX Input Button Array")
     (date "2022-10-24")
-    (rev "0")
+    (rev "1")
     (company "AStA Uni Lübeck")
     (comment 1 "Autor von Leon Dietrich")
     (comment 2 "Erwartet 3.3V und 12V Spannungsversorgung")
