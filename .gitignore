@@ -3,6 +3,7 @@
 
 # Backups
 buttonarray/buttonarray-backups
+mainboard/mainboard-backups
 
 # Temporary files
 *.000
