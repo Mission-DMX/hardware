@@ -1,4 +1,6 @@
 #! /usr/bin/env python3
+# Copyright Leon Dietrich
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 import pyvisa
 rm = pyvisa.ResourceManager()
