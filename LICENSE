@@ -1,6 +1,7 @@
 Hardware in this repository is licensed to you under the CERN-OHL-W.
 Corresponding firmware modules have their own licenses within their
-directory.
+directory. If no such file exists, the BSD 3-clause license, found
+inside the SOFTWARE_LICENSE.txt file applies.
 
 
 
