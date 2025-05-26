@@ -1,0 +1,32 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.0",
+   "Default View_TopLeft":"-457,-404",
+   "ExpandedHierarchyInLayout":"",
+   "PinnedBlocks":"/Main_Controller_0|",
+   "guistr":"# # String gsaved with Nlview 7.8.0 2024-04-26 e1825d835c VDI=44 GEI=38 GUI=JA:21.0 TLS
+#  -string -flagsOSRD
+preplace port port-id_Clk -pg 1 -lvl 0 -x -390 -y -350 -defaultsOSRD
+preplace port port-id_Rst -pg 1 -lvl 0 -x -390 -y -320 -defaultsOSRD
+preplace portBus Byte_In -pg 1 -lvl 0 -x -390 -y -250 -defaultsOSRD
+preplace inst new_message_0 -pg 1 -lvl 1 -x 190 -y 270 -defaultsOSRD -orient R180
+preplace inst Main_Controller_0 -pg 1 -lvl 1 -x 190 -y -220 -defaultsOSRD
+preplace inst Message_Type_Recogni_0 -pg 1 -lvl 1 -x 190 -y 130 -defaultsOSRD -orient R180
+preplace inst Length_Handling_0 -pg 1 -lvl 1 -x 190 -y -20 -defaultsOSRD -orient R180
+preplace netloc Byte_In_1 1 0 1 N -250
+preplace netloc Main_Controller_0_message_type_recognition_ot 1 1 1 460 -230n
+preplace netloc Main_Controller_0_new_Message_out 1 1 1 470 -250n
+preplace netloc Message_Type_Recogni_0_message_type_out 1 0 1 -70 -210n
+preplace netloc Message_Type_Recogni_0_wrong_message_out 1 0 1 -80 -190n
+preplace netloc Net1 1 0 2 -50 -360 440
+preplace netloc Net2 1 0 2 -90 -350 480
+preplace netloc new_message_0_is_new_message_out 1 0 1 -90 -230n
+preplace netloc Main_Controller_0_length_handling_high_out 1 1 1 450 -210n
+preplace netloc Main_Controller_0_length_handling_low_out 1 1 1 430 -190n
+preplace netloc Length_Handling_0_length_byte_low_out 1 0 1 -50 -150n
+preplace netloc Length_Handling_0_length_byte_high_out 1 0 1 -60 -170n
+levelinfo -pg 1 -390 190 610
+pagesize -pg 1 -db -bbox -sgen -530 -540 820 400
+"
+}
+0

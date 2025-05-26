@@ -1,65 +1,81 @@
-----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
+-- Florina Arndt
 -- 
--- Create Date: 03/17/2025 10:51:13 AM
--- Design Name: 
--- Module Name: Message_Type_Recognition - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
--- Description: 
--- 
--- Dependencies: 
--- 
--- Revision:
--- Revision 0.01 - File Created
--- Additional Comments:
--- 
-----------------------------------------------------------------------------------
-
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
+-----
+
 entity Message_Type_Recognition is
-    Port (
-        clk        : in  STD_LOGIC;         -- Takt-Signal
-        reset      : in  STD_LOGIC;         -- Reset-Signal
-        byte_in    : in  STD_LOGIC_VECTOR(7 downto 0); -- Eingang-Byte
-        no_signal  : out STD_LOGIC;  -- Out for no/wrong Signal
-        out_signal : out STD_LOGIC_VECTOR(10 downto 0)
+    Port ( 
+        clk                 : in  STD_LOGIC;                    -- tact-signal
+        reset               : in  STD_LOGIC;                    -- reset-signal
+        byte_in             : in  STD_LOGIC_VECTOR(7 downto 0); -- input-byte
+        wrong_message_out   : out STD_LOGIC;                    -- Out for no/wrong message
+        message_type_out    : out STD_LOGIC_VECTOR(10 downto 0) -- out for received message
     );
 end Message_Type_Recognition;
 
+-----
+
 architecture Behavioral of Message_Type_Recognition is
 
-    -- Definiere die Kombinationen, die erkannt werden sollen
-    constant sende_DMX_Daten           : STD_LOGIC_VECTOR(6 downto 0) := "0000001";
-    constant konfiguriere_DMX          : STD_LOGIC_VECTOR(6 downto 0) := "0000010";
-    constant send_MIDI_Daten           : STD_LOGIC_VECTOR(6 downto 0) := "0000100";
-    constant konfiguriere_MIDI         : STD_LOGIC_VECTOR(6 downto 0) := "0000101";
-    constant sende_RS232_Daten         : STD_LOGIC_VECTOR(6 downto 0) := "0000111";
-    constant konfiguriere_RS232        : STD_LOGIC_VECTOR(6 downto 0) := "0001000";
-    constant sende_Bild_an_Display     : STD_LOGIC_VECTOR(6 downto 0) := "0001010";
-    constant DMX_Daten_empfangen       : STD_LOGIC_VECTOR(6 downto 0) := "0001100";
-    constant MIDI_Daten_empfangen      : STD_LOGIC_VECTOR(6 downto 0) := "0001101";
-    constant RS232_Daten_empfangen     : STD_LOGIC_VECTOR(6 downto 0) := "0001110";
-    constant Eingabe_von_Makrokeyboard : STD_LOGIC_VECTOR(6 downto 0) := "0001111";
-
+    constant Send_DMX_data            : STD_LOGIC_VECTOR(6 downto 0) := "0000001";
+    constant Config_DMX               : STD_LOGIC_VECTOR(6 downto 0) := "0000010";
+    constant Send_MIDI_data           : STD_LOGIC_VECTOR(6 downto 0) := "0000100";
+    constant Config_MIDI              : STD_LOGIC_VECTOR(6 downto 0) := "0000101";
+    constant Sende_RS232_data         : STD_LOGIC_VECTOR(6 downto 0) := "0000111";
+    constant Config_RS232             : STD_LOGIC_VECTOR(6 downto 0) := "0001000";
+    constant Send_image_to_display    : STD_LOGIC_VECTOR(6 downto 0) := "0001010";
+    constant DMX_data_received        : STD_LOGIC_VECTOR(6 downto 0) := "0001100";
+    constant MIDI_data_received       : STD_LOGIC_VECTOR(6 downto 0) := "0001101";
+    constant RS232_data_received      : STD_LOGIC_VECTOR(6 downto 0) := "0001110";
+    constant Input_from_makrokeyboard : STD_LOGIC_VECTOR(6 downto 0) := "0001111";
+      
 begin
 
     process(clk, reset)
     begin
+    
         if reset = '1' then
-            no_signal <= '0';
-        elsif rising_edge(clk) then
-            case byte_in(6 downto 0) is
-             when sende_DMX_Daten =>
-                 out_signal <= "00000000001";
+        
+            wrong_message_out  <= '0';
+            message_type_out   <= "00000000000";
             
+        elsif rising_edge(clk) then
+        
+            case byte_in(6 downto 0) is
+            
+             when Send_DMX_data =>
+                 message_type_out    <= "00000000001";
+             when Config_DMX =>
+                 message_type_out    <= "00000000010";
+             when Send_MIDI_data =>
+                 message_type_out    <= "00000000100";
+             when Config_MIDI =>
+                 message_type_out    <= "00000001000";
+             when Sende_RS232_data =>
+                 message_type_out    <= "00000010000";
+             when Config_RS232 =>
+                 message_type_out    <= "00000100000";
+             when Send_image_to_display =>
+                 message_type_out    <= "00001000000";
+             when DMX_data_received =>
+                 message_type_out    <= "00010000000";
+             when MIDI_data_received =>
+                 message_type_out    <= "00100000000";
+             when RS232_data_received =>
+                 message_type_out    <= "01000000000";
+             when Input_from_makrokeyboard =>
+                 message_type_out    <= "10000000000";
+             when others =>     
+                 message_type_out    <= "00000000000";
+                 wrong_message_out   <= '1';
+                 
             end case;
+            
         end if;
+        
     end process;
 
-end Behavioral;
+end Behavioral;  

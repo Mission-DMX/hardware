@@ -1,0 +1,24 @@
+#-----------------------------------------------------------
+# Vivado v2024.2 (64-bit)
+# SW Build 5239630 on Fri Nov 08 22:34:34 MST 2024
+# IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+# SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+# Start of session at: Tue Apr 22 12:31:22 2025
+# Process ID         : 41931
+# Current directory  : /home/eisenbahn/Schreibtisch/AAA_Florian_BA/VIvado/Programme/BA/BA_Florian/BA_Florian.runs/DMX_BRAM_ONE_synth_1
+# Command line       : vivado -log DMX_BRAM_ONE.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source DMX_BRAM_ONE.tcl
+# Log file           : /home/eisenbahn/Schreibtisch/AAA_Florian_BA/VIvado/Programme/BA/BA_Florian/BA_Florian.runs/DMX_BRAM_ONE_synth_1/DMX_BRAM_ONE.vds
+# Journal file       : /home/eisenbahn/Schreibtisch/AAA_Florian_BA/VIvado/Programme/BA/BA_Florian/BA_Florian.runs/DMX_BRAM_ONE_synth_1/vivado.jou
+# Running On         : itmlab-1
+# Platform           : Ubuntu
+# Operating System   : Ubuntu 24.04.2 LTS
+# Processor Detail   : Intel(R) Core(TM) i3-2100 CPU @ 3.10GHz
+# CPU Frequency      : 3092.297 MHz
+# CPU Physical cores : 2
+# CPU Logical cores  : 4
+# Host memory        : 16644 MB
+# Swap memory        : 4294 MB
+# Total Virtual      : 20939 MB
+# Available Virtual  : 17025 MB
+#-----------------------------------------------------------
+source DMX_BRAM_ONE.tcl -notrace

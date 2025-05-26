@@ -1,24 +1,3 @@
-----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date: 03/06/2025 11:18:36 AM
--- Design Name: 
--- Module Name: DMX_Receiver_tb - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
--- Description: 
--- 
--- Dependencies: 
--- 
--- Revision:
--- Revision 0.01 - File Created
--- Additional Comments:
--- 
-----------------------------------------------------------------------------------
-
-
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
@@ -28,8 +7,8 @@ end DMX_Receiver_tb;
 
 architecture Behavioral of DMX_Receiver_tb is
 
-    constant CLOCK_FREQ   : integer := 50000000;  -- Systemtaktfrequenz (50 MHz)
-    constant DMX_BAUDRATE : integer := 250000;   -- DMX-Baudrate (250 kbit/s)
+    constant CLOCK_FREQ   : integer := 50000000;  
+    constant DMX_BAUDRATE : integer := 250000;   
     constant BIT_PERIOD   : time := 1 sec / DMX_BAUDRATE;
 
     signal clk            : STD_LOGIC := '0';
