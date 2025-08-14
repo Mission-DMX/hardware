@@ -1,0 +1,7 @@
+Running: xsim.dir/Message_Type_Recognition_tb_behav/xsimk -simmode gui -wdb Message_Type_Recognition_tb_behav.wdb -simrunnum 0 -socket 41919
+Design successfully loaded
+Design Loading Memory Usage: 180664 KB (Peak: 180664 KB)
+Design Loading CPU Usage: 1910 ms
+Simulation completed
+Simulation Memory Usage: 262400 KB (Peak: 319932 KB)
+Simulation CPU Usage: 1920 ms
