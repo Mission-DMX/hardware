@@ -8,40 +8,19 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity new_message is
     Port ( 
-        clk                : in  STD_LOGIC; 
-        reset              : in  STD_LOGIC;
-        byte_in            : in STD_LOGIC_VECTOR (0 to 7);
-        is_new_message_out : out STD_LOGIC);
+        byte_in            : in  STD_LOGIC_VECTOR (7 downto 0); -- byte of data from PC
+        is_new_message_out : out STD_LOGIC                      -- is a new message signal
+    );                
 end new_message;
 
 ------
 
 architecture Behavioral of new_message is
 
-begin
-
-    process(clk, reset, byte_in)
     begin
-    
-        if rising_edge(clk) then
-        
-            if reset = '1' then
-
-                is_new_message_out <= '0';
-            
-            else
-        
-                if byte_in(7) = '1' then
-                    is_new_message_out <= '1';
-                else
-                    is_new_message_out <= '0';             
-                end if;
-          
-           end if;
            
-    end if;      
-        
-    end process;
-    
+        -- return 1 if the MSB is a 1   
+        is_new_message_out <= byte_in(7);
+                  
 end Behavioral;
 

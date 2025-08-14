@@ -1,7 +1,0 @@
-# compile vhdl design source files
-vhdl xil_defaultlib  \
-"../../../../BA_Florian.srcs/sources_1/new/Length_Handling.vhd" \
-"../../../../BA_Florian.srcs/sim_1/new/Length_Handling_tb.vhd" \
-
-# Do not sort compile order
-nosort

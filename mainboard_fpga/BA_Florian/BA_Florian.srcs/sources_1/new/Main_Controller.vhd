@@ -36,18 +36,22 @@ entity Main_Controller is
 
 architecture Behavioral of Main_Controller is
 
-begin
- 
-    process(clk, reset)
+    type state_type is (IDLE, LENGTH, MESSAGETYPE);
+    signal state      : state_type := IDLE;
+
+
     begin
+ 
+        process(clk, reset)
+        begin
     
-        if reset = '1' then
-        -- todo
-        elsif rising_edge(clk) then
-        -- todo
-        end if;
+            if reset = '1' then
+            -- todo
+            elsif rising_edge(clk) then
+            -- todo
+            end if;
         
     
-    end process;
+        end process;
     
 end Behavioral;

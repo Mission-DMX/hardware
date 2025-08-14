@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x95C9099D95C9099D",
+      "boundary_crc": "0xBD866ECBBD866ECB",
       "device": "xc7a35tftg256-1",
       "gen_directory": "../../../../BA_Florian.gen/sources_1/bd/Main_Design",
       "name": "Main_Design",
@@ -10,10 +10,9 @@
       "tool_version": "2024.2"
     },
     "design_tree": {
-      "new_message_0": "",
-      "Main_Controller_0": "",
-      "Message_Type_Recogni_0": "",
-      "Length_Handling_0": ""
+      "Input_Controller_0": "",
+      "Length_Handling_0": "",
+      "new_message_0": ""
     },
     "ports": {
       "Clk": {
@@ -22,22 +21,22 @@
       "Rst": {
         "direction": "I"
       },
-      "Byte_In": {
+      "PC_Byte": {
         "direction": "I",
-        "left": "7",
+        "left": "8",
         "right": "0"
       }
     },
     "components": {
-      "new_message_0": {
-        "vlnv": "xilinx.com:module_ref:new_message:1.0",
+      "Input_Controller_0": {
+        "vlnv": "xilinx.com:module_ref:Input_Controller:1.0",
         "ip_revision": "1",
-        "xci_name": "Main_Design_new_message_0_1",
-        "xci_path": "ip/Main_Design_new_message_0_1/Main_Design_new_message_0_1.xci",
-        "inst_hier_path": "new_message_0",
+        "xci_name": "Main_Design_Input_Controller_0_0",
+        "xci_path": "ip/Main_Design_Input_Controller_0_0/Main_Design_Input_Controller_0_0.xci",
+        "inst_hier_path": "Input_Controller_0",
         "reference_info": {
           "ref_type": "hdl",
-          "ref_name": "new_message",
+          "ref_name": "Input_Controller",
           "boundary_crc": "0x0"
         },
         "ports": {
@@ -55,125 +54,52 @@
             "type": "rst",
             "direction": "I"
           },
-          "byte_in": {
+          "byte_PC_in": {
             "direction": "I",
-            "left": "0",
-            "right": "7"
-          },
-          "is_new_message_out": {
-            "direction": "O"
-          }
-        }
-      },
-      "Main_Controller_0": {
-        "vlnv": "xilinx.com:module_ref:Main_Controller:1.0",
-        "ip_revision": "1",
-        "xci_name": "Main_Design_Main_Controller_0_4",
-        "xci_path": "ip/Main_Design_Main_Controller_0_4/Main_Design_Main_Controller_0_4.xci",
-        "inst_hier_path": "Main_Controller_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "Main_Controller",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "clk": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "ASSOCIATED_RESET": {
-                "value": "reset",
-                "value_src": "constant"
-              }
-            }
-          },
-          "reset": {
-            "type": "rst",
-            "direction": "I"
-          },
-          "byte_in": {
-            "direction": "I"
-          },
-          "new_Message_out": {
-            "direction": "O",
             "left": "7",
             "right": "0"
           },
           "is_new_message_in": {
             "direction": "I"
           },
-          "message_type_recognition_out": {
+          "length_high_in": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "length_low_in": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "byte_to_new_message_out": {
             "direction": "O",
             "left": "7",
             "right": "0"
           },
-          "message_type_in": {
-            "direction": "I",
-            "left": "10",
-            "right": "0"
-          },
-          "wrong_message_in": {
-            "direction": "I"
-          },
-          "length_handling_high_out": {
+          "byte_to_message_type_recognition": {
             "direction": "O",
             "left": "7",
             "right": "0"
           },
-          "length_handling_low_out": {
+          "byte_to_port_handling": {
             "direction": "O",
             "left": "7",
             "right": "0"
           },
-          "length_byte_high_in": {
-            "direction": "I",
-            "left": "7",
-            "right": "0"
-          },
-          "length_byte_low_in": {
-            "direction": "I",
-            "left": "7",
-            "right": "0"
-          }
-        }
-      },
-      "Message_Type_Recogni_0": {
-        "vlnv": "xilinx.com:module_ref:Message_Type_Recognition:1.0",
-        "ip_revision": "1",
-        "xci_name": "Main_Design_Message_Type_Recogni_0_1",
-        "xci_path": "ip/Main_Design_Message_Type_Recogni_0_1/Main_Design_Message_Type_Recogni_0_1.xci",
-        "inst_hier_path": "Message_Type_Recogni_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "Message_Type_Recognition",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "clk": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "ASSOCIATED_RESET": {
-                "value": "reset",
-                "value_src": "constant"
-              }
-            }
-          },
-          "reset": {
-            "type": "rst",
-            "direction": "I"
-          },
-          "byte_in": {
-            "direction": "I",
-            "left": "7",
-            "right": "0"
-          },
-          "wrong_message_out": {
-            "direction": "O"
-          },
-          "message_type_out": {
+          "byte_to_length_handling_high_out": {
             "direction": "O",
-            "left": "10",
+            "left": "7",
+            "right": "0"
+          },
+          "byte_to_length_handling_low_out": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "byte_to_messae_processor_out": {
+            "direction": "O",
+            "left": "7",
             "right": "0"
           }
         }
@@ -181,8 +107,8 @@
       "Length_Handling_0": {
         "vlnv": "xilinx.com:module_ref:Length_Handling:1.0",
         "ip_revision": "1",
-        "xci_name": "Main_Design_Length_Handling_0_0",
-        "xci_path": "ip/Main_Design_Length_Handling_0_0/Main_Design_Length_Handling_0_0.xci",
+        "xci_name": "Main_Design_Length_Handling_0_1",
+        "xci_path": "ip/Main_Design_Length_Handling_0_1/Main_Design_Length_Handling_0_1.xci",
         "inst_hier_path": "Length_Handling_0",
         "reference_info": {
           "ref_type": "hdl",
@@ -225,85 +151,101 @@
             "right": "0"
           }
         }
+      },
+      "new_message_0": {
+        "vlnv": "xilinx.com:module_ref:new_message:1.0",
+        "ip_revision": "1",
+        "xci_name": "Main_Design_new_message_0_2",
+        "xci_path": "ip/Main_Design_new_message_0_2/Main_Design_new_message_0_2.xci",
+        "inst_hier_path": "new_message_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "new_message",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "reset",
+                "value_src": "constant"
+              }
+            }
+          },
+          "reset": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "byte_in": {
+            "direction": "I",
+            "left": "0",
+            "right": "7"
+          },
+          "is_new_message_out": {
+            "direction": "O"
+          }
+        }
       }
     },
     "nets": {
-      "Byte_In_1": {
+      "Clk_1": {
         "ports": [
-          "Byte_In",
-          "Main_Controller_0/byte_in"
+          "Clk",
+          "Length_Handling_0/clk",
+          "new_message_0/clk",
+          "Input_Controller_0/clk"
+        ]
+      },
+      "Input_Controller_0_byte_to_length_handling_high_out": {
+        "ports": [
+          "Input_Controller_0/byte_to_length_handling_high_out",
+          "Length_Handling_0/byte_high_in"
+        ]
+      },
+      "Input_Controller_0_byte_to_length_handling_low_out": {
+        "ports": [
+          "Input_Controller_0/byte_to_length_handling_low_out",
+          "Length_Handling_0/byte_low_in"
+        ]
+      },
+      "Input_Controller_0_byte_to_new_message_out": {
+        "ports": [
+          "Input_Controller_0/byte_to_new_message_out",
+          "new_message_0/byte_in"
         ]
       },
       "Length_Handling_0_length_byte_high_out": {
         "ports": [
           "Length_Handling_0/length_byte_high_out",
-          "Main_Controller_0/length_byte_high_in"
+          "Input_Controller_0/length_high_in"
         ]
       },
       "Length_Handling_0_length_byte_low_out": {
         "ports": [
           "Length_Handling_0/length_byte_low_out",
-          "Main_Controller_0/length_byte_low_in"
+          "Input_Controller_0/length_low_in"
         ]
       },
-      "Main_Controller_0_length_handling_high_out": {
+      "PC_Byte_1": {
         "ports": [
-          "Main_Controller_0/length_handling_high_out",
-          "Length_Handling_0/byte_high_in"
+          "PC_Byte",
+          "Input_Controller_0/byte_PC_in"
         ]
       },
-      "Main_Controller_0_length_handling_low_out": {
-        "ports": [
-          "Main_Controller_0/length_handling_low_out",
-          "Length_Handling_0/byte_low_in"
-        ]
-      },
-      "Main_Controller_0_message_type_recognition_ot": {
-        "ports": [
-          "Main_Controller_0/message_type_recognition_out",
-          "Message_Type_Recogni_0/byte_in"
-        ]
-      },
-      "Main_Controller_0_new_Message_out": {
-        "ports": [
-          "Main_Controller_0/new_Message_out",
-          "new_message_0/byte_in"
-        ]
-      },
-      "Message_Type_Recogni_0_message_type_out": {
-        "ports": [
-          "Message_Type_Recogni_0/message_type_out",
-          "Main_Controller_0/message_type_in"
-        ]
-      },
-      "Message_Type_Recogni_0_wrong_message_out": {
-        "ports": [
-          "Message_Type_Recogni_0/wrong_message_out",
-          "Main_Controller_0/wrong_message_in"
-        ]
-      },
-      "Net1": {
+      "Rst_1": {
         "ports": [
           "Rst",
-          "Message_Type_Recogni_0/reset",
+          "Length_Handling_0/reset",
           "new_message_0/reset",
-          "Main_Controller_0/reset",
-          "Length_Handling_0/reset"
-        ]
-      },
-      "Net2": {
-        "ports": [
-          "Clk",
-          "Message_Type_Recogni_0/clk",
-          "new_message_0/clk",
-          "Main_Controller_0/clk",
-          "Length_Handling_0/clk"
+          "Input_Controller_0/reset"
         ]
       },
       "new_message_0_is_new_message_out": {
         "ports": [
           "new_message_0/is_new_message_out",
-          "Main_Controller_0/is_new_message_in"
+          "Input_Controller_0/is_new_message_in"
         ]
       }
     }

@@ -10,5 +10,20 @@
 
 --Kommentare und Testbenches erledigt
 
---Length Handling Comments Y / Testbench Y
--- new_message Comments X / Testbench X
+-- Length Handling            Comments Y / Testbench Y
+-- new_message                Comments Y / Testbench Y
+-- Message_Type_Recognition   Comments Y / Testbench Y
+-- Message_Byte_Processo      Comments X / Testbench Y
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
+--
