@@ -13,15 +13,12 @@ entity Message_Byte_Processor is
            reset               : in  STD_LOGIC;                      -- reset 
            
            data_byte_in        : in  STD_LOGIC_VECTOR (7 downto 0);  -- data from contoller
-           
-           length_high_in      : in  STD_LOGIC_VECTOR (7 downto 0);  -- 
-           length_low_in       : in  STD_LOGIC_VECTOR (7 downto 0);  --
-           
-           receiving_in        : in  STD_LOGIC;
-           sending_in          : in  STD_LOGIC;
-           
-           
-           data_byte_out       : out STD_LOGIC_VECTOR (7 downto 0);  -- data to BRAM         
+                   
+          -- receiving_in        : in  STD_LOGIC;
+          -- sending_in          : in  STD_LOGIC;
+                   
+           data_byte_out       : out STD_LOGIC_VECTOR (7 downto 0);  -- data to BRAM   
+                 
            write_now_out       : out STD_LOGIC_VECTOR (0 downto 0)   -- signal to BRAM to write now
           );
            
@@ -30,13 +27,12 @@ end Message_Byte_Processor;
 -----
 
 architecture Behavioral of Message_Byte_Processor is
- 
-    signal length         : STD_LOGIC_VECTOR(15 downto 0)             := length_high_in and length_low_in;                                
-    signal buffer_in      : STD_LOGIC_VECTOR(512*8-1 downto 0)        := (others => '0');                       -- a buffer to store  the wanted bits
-    signal pointer        : natural range 0 to 512*8-1                := 512*8-1;                                -- points to were to store in the buffer  
+                              
+    signal buffer_in      : STD_LOGIC_VECTOR(15 downto 0) := (others => '0');                   -- a buffer to store  the wanted bits
+    signal pointer        : natural range 15 to 0         := 15;                                -- points to were to store in the buffer  
     signal counter        : integer := 0;
     
-    constant threshold    : integer := 8;                                                                   -- a threshold when a full byte is available
+    constant threshold    : integer := 8;                                                         -- a threshold when a full byte is available
 
 begin
 

@@ -1,5 +1,12 @@
--- Florian Arndt
--- This modul tests if a byte has a 1 as most significant Byte.
+----------------------------------------------------------------------------------
+-- Creator: Florian Arndt 
+-- 
+-- Module Name: New_Message
+-- Project Name: Florian Arndt Bachelor Arbeit 
+-- Description: This module tests, if a new message has begun
+--              by controlling if the MSB of a Byte from th PC is a one.
+-- 
+----------------------------------------------------------------------------------
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;

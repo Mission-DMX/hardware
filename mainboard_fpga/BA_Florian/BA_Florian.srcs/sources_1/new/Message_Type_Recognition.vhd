@@ -10,7 +10,7 @@ entity Message_Type_Recognition is
     Port ( 
         byte_in             : in  STD_LOGIC_VECTOR(7 downto 0); -- input-byte
         wrong_message_out   : out STD_LOGIC;                    -- Out for no/wrong message
-        message_type_out    : out STD_LOGIC_VECTOR(10 downto 0) -- out for received message
+        message_type_out    : out STD_LOGIC_VECTOR(3 downto 0) -- out for received message
     );
 end Message_Type_Recognition;
 
@@ -39,40 +39,40 @@ begin
         -- give out what type of message came in    
         case byte_in(6 downto 0) is           
             when Send_DMX_data =>
-                message_type_out    <= "00000000001";
+                message_type_out    <= "0000";
                 wrong_message_out   <= '0';
             when Config_DMX =>
-                message_type_out    <= "00000000010";
+                message_type_out    <= "0001";
                 wrong_message_out   <= '0';
             when Send_MIDI_data =>
-                message_type_out    <= "00000000100";
+                message_type_out    <= "0010";
                 wrong_message_out   <= '0';
             when Config_MIDI =>
-                message_type_out    <= "00000001000";
+                message_type_out    <= "0011";
                 wrong_message_out   <= '0';
             when Sende_RS232_data =>
-                message_type_out    <= "00000010000";
+                message_type_out    <= "0100";
                 wrong_message_out   <= '0';
             when Config_RS232 =>
-                message_type_out    <= "00000100000";
+                message_type_out    <= "0101";
                 wrong_message_out   <= '0';
             when Send_image_to_display =>
-                message_type_out    <= "00001000000";
+                message_type_out    <= "0110";
                 wrong_message_out   <= '0';
             when DMX_data_received =>
-                message_type_out    <= "00010000000";
+                message_type_out    <= "0111";
                 wrong_message_out   <= '0';
             when MIDI_data_received =>
-                message_type_out    <= "00100000000";
+                message_type_out    <= "1000";
                 wrong_message_out   <= '0';
             when RS232_data_received =>
-                message_type_out    <= "01000000000";
+                message_type_out    <= "1001";
                 wrong_message_out   <= '0';
             when Input_from_makrokeyboard =>
-                message_type_out    <= "10000000000";
+                message_type_out    <= "1010";
                 wrong_message_out   <= '0';
             when others =>     
-                message_type_out    <= "00000000000";
+                message_type_out    <= "1011";
                 wrong_message_out   <= '1';                 
         end case;
                

@@ -1,0 +1,598 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0x9342BC833F0228AA",
+      "device": "xc7a35tftg256-1",
+      "gen_directory": "../../../../BA_Florian.gen/sources_1/bd/Input_Design",
+      "name": "Input_Design",
+      "rev_ctrl_bd_flag": "RevCtrlBdOff",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2024.2"
+    },
+    "design_tree": {
+      "Input_Controller_Sta_0": "",
+      "Input_Controller_Sta_1": "",
+      "Input_Controller_Sta_2": "",
+      "Input_Controller_Sta_3": "",
+      "new_message_0": "",
+      "Message_Type_Recogni_0": "",
+      "Length_Handling_0": "",
+      "Message_Byte_Process_0": "",
+      "Input_Controller_0": "",
+      "Port_Handling_0": "",
+      "BRAM_Director_0": ""
+    },
+    "ports": {
+      "byte_PC_in_0": {
+        "direction": "I",
+        "left": "7",
+        "right": "0"
+      },
+      "clk_0": {
+        "type": "clk",
+        "direction": "I"
+      },
+      "reset_0": {
+        "type": "rst",
+        "direction": "I"
+      }
+    },
+    "components": {
+      "Input_Controller_Sta_0": {
+        "vlnv": "xilinx.com:module_ref:Input_Controller_State_IDLE:1.0",
+        "ip_revision": "1",
+        "xci_name": "Input_Design_Input_Controller_Sta_0_1",
+        "xci_path": "ip/Input_Design_Input_Controller_Sta_0_1/Input_Design_Input_Controller_Sta_0_1.xci",
+        "inst_hier_path": "Input_Controller_Sta_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "Input_Controller_State_IDLE",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "active_in": {
+            "direction": "I"
+          },
+          "byte_PC_in": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "byte_to_new_message_out": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "byte_to_message_type_recognition": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          }
+        }
+      },
+      "Input_Controller_Sta_1": {
+        "vlnv": "xilinx.com:module_ref:Input_Controller_State_PORT:1.0",
+        "ip_revision": "1",
+        "xci_name": "Input_Design_Input_Controller_Sta_1_1",
+        "xci_path": "ip/Input_Design_Input_Controller_Sta_1_1/Input_Design_Input_Controller_Sta_1_1.xci",
+        "inst_hier_path": "Input_Controller_Sta_1",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "Input_Controller_State_PORT",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "active_in": {
+            "direction": "I"
+          },
+          "byte_PC_in": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "byte_to_port_handling": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          }
+        }
+      },
+      "Input_Controller_Sta_2": {
+        "vlnv": "xilinx.com:module_ref:Input_Controller_State_LENGTH:1.0",
+        "ip_revision": "1",
+        "xci_name": "Input_Design_Input_Controller_Sta_2_1",
+        "xci_path": "ip/Input_Design_Input_Controller_Sta_2_1/Input_Design_Input_Controller_Sta_2_1.xci",
+        "inst_hier_path": "Input_Controller_Sta_2",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "Input_Controller_State_LENGTH",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "active_in": {
+            "direction": "I"
+          },
+          "byte_PC_in": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "byte_to_length_handling_high_out": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "byte_to_length_handling_low_out": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "length_done_out": {
+            "direction": "O"
+          }
+        }
+      },
+      "Input_Controller_Sta_3": {
+        "vlnv": "xilinx.com:module_ref:Input_Controller_State_DATA:1.0",
+        "ip_revision": "1",
+        "xci_name": "Input_Design_Input_Controller_Sta_3_2",
+        "xci_path": "ip/Input_Design_Input_Controller_Sta_3_2/Input_Design_Input_Controller_Sta_3_2.xci",
+        "inst_hier_path": "Input_Controller_Sta_3",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "Input_Controller_State_DATA",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "active_in": {
+            "direction": "I"
+          },
+          "byte_PC_in": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "byte_to_message_processor_out": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          }
+        }
+      },
+      "new_message_0": {
+        "vlnv": "xilinx.com:module_ref:new_message:1.0",
+        "ip_revision": "1",
+        "xci_name": "Input_Design_new_message_0_1",
+        "xci_path": "ip/Input_Design_new_message_0_1/Input_Design_new_message_0_1.xci",
+        "inst_hier_path": "new_message_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "new_message",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "byte_in": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "is_new_message_out": {
+            "direction": "O"
+          }
+        }
+      },
+      "Message_Type_Recogni_0": {
+        "vlnv": "xilinx.com:module_ref:Message_Type_Recognition:1.0",
+        "ip_revision": "1",
+        "xci_name": "Input_Design_Message_Type_Recogni_0_0",
+        "xci_path": "ip/Input_Design_Message_Type_Recogni_0_0/Input_Design_Message_Type_Recogni_0_0.xci",
+        "inst_hier_path": "Message_Type_Recogni_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "Message_Type_Recognition",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "byte_in": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "wrong_message_out": {
+            "direction": "O"
+          },
+          "message_type_out": {
+            "direction": "O",
+            "left": "3",
+            "right": "0"
+          }
+        }
+      },
+      "Length_Handling_0": {
+        "vlnv": "xilinx.com:module_ref:Length_Handling:1.0",
+        "ip_revision": "1",
+        "xci_name": "Input_Design_Length_Handling_0_0",
+        "xci_path": "ip/Input_Design_Length_Handling_0_0/Input_Design_Length_Handling_0_0.xci",
+        "inst_hier_path": "Length_Handling_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "Length_Handling",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "byte_high_in": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "byte_low_in": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "length_byte_high_out": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "length_byte_low_out": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          }
+        }
+      },
+      "Message_Byte_Process_0": {
+        "vlnv": "xilinx.com:module_ref:Message_Byte_Processor:1.0",
+        "ip_revision": "1",
+        "xci_name": "Input_Design_Message_Byte_Process_0_0",
+        "xci_path": "ip/Input_Design_Message_Byte_Process_0_0/Input_Design_Message_Byte_Process_0_0.xci",
+        "inst_hier_path": "Message_Byte_Process_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "Message_Byte_Processor",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "reset",
+                "value_src": "constant"
+              }
+            }
+          },
+          "reset": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "data_byte_in": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "data_byte_out": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "write_now_out": {
+            "direction": "O",
+            "left": "0",
+            "right": "0"
+          }
+        }
+      },
+      "Input_Controller_0": {
+        "vlnv": "xilinx.com:module_ref:Input_Controller:1.0",
+        "ip_revision": "1",
+        "xci_name": "Input_Design_Input_Controller_0_0",
+        "xci_path": "ip/Input_Design_Input_Controller_0_0/Input_Design_Input_Controller_0_0.xci",
+        "inst_hier_path": "Input_Controller_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "Input_Controller",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "reset",
+                "value_src": "constant"
+              }
+            }
+          },
+          "reset": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "byte_PC_in": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "is_new_message_in": {
+            "direction": "I"
+          },
+          "length_high_in": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "length_low_in": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "wrong_message_in": {
+            "direction": "I"
+          },
+          "length_done_in": {
+            "direction": "I"
+          },
+          "data_done_in": {
+            "direction": "I"
+          },
+          "signal_to_IDLE_out": {
+            "direction": "O"
+          },
+          "signal_to_PORT_out": {
+            "direction": "O"
+          },
+          "signal_to_LENGTH_out": {
+            "direction": "O"
+          },
+          "signal_to_DATA_out": {
+            "direction": "O"
+          },
+          "byte_PC_out": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          }
+        }
+      },
+      "Port_Handling_0": {
+        "vlnv": "xilinx.com:module_ref:Port_Handling:1.0",
+        "ip_revision": "1",
+        "xci_name": "Input_Design_Port_Handling_0_0",
+        "xci_path": "ip/Input_Design_Port_Handling_0_0/Input_Design_Port_Handling_0_0.xci",
+        "inst_hier_path": "Port_Handling_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "Port_Handling",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "port_byte_in": {
+            "direction": "I",
+            "left": "8",
+            "right": "0"
+          },
+          "message_type_in": {
+            "direction": "I",
+            "left": "3",
+            "right": "0"
+          },
+          "port_activation_out": {
+            "direction": "O",
+            "left": "2",
+            "right": "0"
+          }
+        }
+      },
+      "BRAM_Director_0": {
+        "vlnv": "xilinx.com:module_ref:BRAM_Director:1.0",
+        "ip_revision": "1",
+        "xci_name": "Input_Design_BRAM_Director_0_0",
+        "xci_path": "ip/Input_Design_BRAM_Director_0_0/Input_Design_BRAM_Director_0_0.xci",
+        "inst_hier_path": "BRAM_Director_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "BRAM_Director",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "reset",
+                "value_src": "constant"
+              }
+            }
+          },
+          "reset": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "port_in": {
+            "direction": "I",
+            "left": "2",
+            "right": "0"
+          },
+          "byte_in": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "to_BRAM_DMX_ONE_out": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "to_BRAM_DMX_TWO_out": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "to_BRAM_DMX_THREE_out": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "to_BRAM_DMX_FOUR_out": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "to_BRAM_MiDi_ONE_out": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "to_BRAM_MiDi_TWO_out": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "to_BRAM_RS232_ONE_out": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "port_error": {
+            "direction": "O"
+          }
+        }
+      }
+    },
+    "nets": {
+      "Input_Controller_0_byte_PC_out": {
+        "ports": [
+          "Input_Controller_0/byte_PC_out",
+          "Input_Controller_Sta_0/byte_PC_in",
+          "Input_Controller_Sta_1/byte_PC_in",
+          "Input_Controller_Sta_3/byte_PC_in",
+          "Input_Controller_Sta_2/byte_PC_in"
+        ]
+      },
+      "Input_Controller_0_signal_to_DATA_out": {
+        "ports": [
+          "Input_Controller_0/signal_to_DATA_out",
+          "Input_Controller_Sta_3/active_in"
+        ]
+      },
+      "Input_Controller_0_signal_to_IDLE_out": {
+        "ports": [
+          "Input_Controller_0/signal_to_IDLE_out",
+          "Input_Controller_Sta_0/active_in"
+        ]
+      },
+      "Input_Controller_0_signal_to_LENGTH_out": {
+        "ports": [
+          "Input_Controller_0/signal_to_LENGTH_out",
+          "Input_Controller_Sta_2/active_in"
+        ]
+      },
+      "Input_Controller_0_signal_to_PORT_out": {
+        "ports": [
+          "Input_Controller_0/signal_to_PORT_out",
+          "Input_Controller_Sta_1/active_in"
+        ]
+      },
+      "Input_Controller_Sta_0_byte_to_message_type_recognition": {
+        "ports": [
+          "Input_Controller_Sta_0/byte_to_message_type_recognition",
+          "Message_Type_Recogni_0/byte_in"
+        ]
+      },
+      "Input_Controller_Sta_0_byte_to_new_message_out": {
+        "ports": [
+          "Input_Controller_Sta_0/byte_to_new_message_out",
+          "new_message_0/byte_in"
+        ]
+      },
+      "Input_Controller_Sta_1_byte_to_port_handling": {
+        "ports": [
+          "Input_Controller_Sta_1/byte_to_port_handling",
+          "Port_Handling_0/port_byte_in"
+        ]
+      },
+      "Input_Controller_Sta_2_byte_to_length_handling_high_out": {
+        "ports": [
+          "Input_Controller_Sta_2/byte_to_length_handling_high_out",
+          "Length_Handling_0/byte_high_in"
+        ]
+      },
+      "Input_Controller_Sta_2_byte_to_length_handling_low_out": {
+        "ports": [
+          "Input_Controller_Sta_2/byte_to_length_handling_low_out",
+          "Length_Handling_0/byte_low_in"
+        ]
+      },
+      "Input_Controller_Sta_2_length_done_out": {
+        "ports": [
+          "Input_Controller_Sta_2/length_done_out",
+          "Input_Controller_0/length_done_in"
+        ]
+      },
+      "Input_Controller_Sta_3_byte_to_message_processor_out": {
+        "ports": [
+          "Input_Controller_Sta_3/byte_to_message_processor_out",
+          "Message_Byte_Process_0/data_byte_in"
+        ]
+      },
+      "Length_Handling_0_length_byte_high_out": {
+        "ports": [
+          "Length_Handling_0/length_byte_high_out",
+          "Input_Controller_0/length_high_in"
+        ]
+      },
+      "Length_Handling_0_length_byte_low_out": {
+        "ports": [
+          "Length_Handling_0/length_byte_low_out",
+          "Input_Controller_0/length_low_in"
+        ]
+      },
+      "Message_Byte_Process_0_data_byte_out": {
+        "ports": [
+          "Message_Byte_Process_0/data_byte_out",
+          "BRAM_Director_0/port_in"
+        ]
+      },
+      "Message_Type_Recogni_0_message_type_out": {
+        "ports": [
+          "Message_Type_Recogni_0/message_type_out",
+          "Port_Handling_0/message_type_in"
+        ]
+      },
+      "Message_Type_Recogni_0_wrong_message_out": {
+        "ports": [
+          "Message_Type_Recogni_0/wrong_message_out",
+          "Input_Controller_0/wrong_message_in"
+        ]
+      },
+      "byte_PC_in_0_1": {
+        "ports": [
+          "byte_PC_in_0",
+          "Input_Controller_0/byte_PC_in"
+        ]
+      },
+      "clk_0_1": {
+        "ports": [
+          "clk_0",
+          "Input_Controller_0/clk"
+        ]
+      },
+      "new_message_0_is_new_message_out": {
+        "ports": [
+          "new_message_0/is_new_message_out",
+          "Input_Controller_0/is_new_message_in"
+        ]
+      },
+      "reset_0_1": {
+        "ports": [
+          "reset_0",
+          "Input_Controller_0/reset"
+        ]
+      }
+    }
+  }
+}

@@ -40,15 +40,15 @@ END component;
 begin
     u1: DMX_BRAM_ONE
         port map (
-            clka  => clk,
-            ena   => write_in,
-            wea(0)   => write_in,
-            addra => adress_in,
-            dina  => data_byte_in,
-            clkb  => clk,
-            enb   => read_in,  
-            addrb => adress_in,
-            doutb => data_byte_out
+            clka   => clk,
+            ena    => write_in,
+            wea(0) => write_in,
+            addra  => adress_in,
+            dina   => data_byte_in,
+            clkb   => clk,
+            enb    => read_in,  
+            addrb  => adress_in,
+            doutb  => data_byte_out
          );
 
     process(clk, reset)

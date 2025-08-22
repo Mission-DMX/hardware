@@ -1,2 +1,4 @@
-INFO: [VRFC 10-163] Analyzing VHDL file "/home/eisenbahn/Schreibtisch/AAA_Florian_BA/VIvado/Programme/BA/BA_Florian/BA_Florian.srcs/sim_1/new/Message_Type_Processor_tb.vhd" into library xil_defaultlib
-INFO: [VRFC 10-3107] analyzing entity 'Message_Byte_Processor_tb'
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/eisenbahn/Schreibtisch/AAA_Florian_BA/VIvado/Programme/BA/BA_Florian/BA_Florian.srcs/sources_1/new/Port_Handling.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'Port_Handling'
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/eisenbahn/Schreibtisch/AAA_Florian_BA/VIvado/Programme/BA/BA_Florian/BA_Florian.srcs/sim_1/new/Port_Handling_tb.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'Port_Handling_tb'

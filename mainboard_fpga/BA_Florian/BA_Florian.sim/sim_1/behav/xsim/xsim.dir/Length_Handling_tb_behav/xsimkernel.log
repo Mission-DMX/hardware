@@ -1,7 +1,0 @@
-Running: xsim.dir/Length_Handling_tb_behav/xsimk -simmode gui -wdb Length_Handling_tb_behav.wdb -simrunnum 0 -socket 50731
-Design successfully loaded
-Design Loading Memory Usage: 180664 KB (Peak: 180664 KB)
-Design Loading CPU Usage: 1880 ms
-Simulation completed
-Simulation Memory Usage: 262400 KB (Peak: 319932 KB)
-Simulation CPU Usage: 1880 ms

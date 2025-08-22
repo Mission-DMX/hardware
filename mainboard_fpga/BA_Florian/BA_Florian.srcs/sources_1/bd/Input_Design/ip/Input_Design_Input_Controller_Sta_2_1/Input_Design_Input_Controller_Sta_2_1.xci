@@ -1,0 +1,47 @@
+{
+  "schema": "xilinx.com:schema:json_instance:1.0",
+  "ip_inst": {
+    "xci_name": "Input_Design_Input_Controller_Sta_2_1",
+    "cell_name": "Input_Controller_Sta_2",
+    "component_reference": "xilinx.com:module_ref:Input_Controller_State_LENGTH:1.0",
+    "ip_revision": "1",
+    "gen_directory": "../../../../../../BA_Florian.gen/sources_1/bd/Input_Design/ip/Input_Design_Input_Controller_Sta_2_1",
+    "parameters": {
+      "component_parameters": {
+        "Component_Name": [ { "value": "Input_Design_Input_Controller_Sta_2_1", "resolve_type": "user", "usage": "all" } ]
+      },
+      "project_parameters": {
+        "ARCHITECTURE": [ { "value": "artix7" } ],
+        "BASE_BOARD_PART": [ { "value": "" } ],
+        "BOARD_CONNECTIONS": [ { "value": "" } ],
+        "DEVICE": [ { "value": "xc7a35t" } ],
+        "PACKAGE": [ { "value": "ftg256" } ],
+        "PREFHDL": [ { "value": "VHDL" } ],
+        "SILICON_REVISION": [ { "value": "" } ],
+        "SIMULATOR_LANGUAGE": [ { "value": "MIXED" } ],
+        "SPEEDGRADE": [ { "value": "-1" } ],
+        "STATIC_POWER": [ { "value": "" } ],
+        "TEMPERATURE_GRADE": [ { "value": "" } ]
+      },
+      "runtime_parameters": {
+        "IPCONTEXT": [ { "value": "IP_Integrator" } ],
+        "IPREVISION": [ { "value": "1" } ],
+        "MANAGED": [ { "value": "TRUE" } ],
+        "OUTPUTDIR": [ { "value": "../../../../../../BA_Florian.gen/sources_1/bd/Input_Design/ip/Input_Design_Input_Controller_Sta_2_1" } ],
+        "SELECTEDSIMMODEL": [ { "value": "" } ],
+        "SHAREDDIR": [ { "value": "../../ipshared" } ],
+        "SWVERSION": [ { "value": "2024.2" } ],
+        "SYNTHESISFLOW": [ { "value": "OOC_HIERARCHICAL" } ]
+      }
+    },
+    "boundary": {
+      "ports": {
+        "active_in": [ { "direction": "in" } ],
+        "byte_PC_in": [ { "direction": "in", "size_left": "7", "size_right": "0" } ],
+        "byte_to_length_handling_high_out": [ { "direction": "out", "size_left": "7", "size_right": "0" } ],
+        "byte_to_length_handling_low_out": [ { "direction": "out", "size_left": "7", "size_right": "0" } ],
+        "length_done_out": [ { "direction": "out" } ]
+      }
+    }
+  }
+}

@@ -12,16 +12,18 @@ entity Input_Controller is
         is_new_message_in                : in  STD_LOGIC;                     -- is a new message signal
         length_high_in                   : in  STD_LOGIC_VECTOR(7 downto 0);
         length_low_in                    : in  STD_LOGIC_VECTOR(7 downto 0);
+        wrong_message_in                 : in  STD_LOGIC;
         
+        length_done_in                   : in  STD_LOGIC; -- signal length module is done
+        data_done_in                     : in  STD_LOGIC; -- signal data module is done
         
         -- outputs   
-        byte_to_new_message_out          : out STD_LOGIC_VECTOR(7 downto 0); -- sending byte to modul
-        byte_to_message_type_recognition : out STD_LOGIC_VECTOR(7 downto 0); -- sending byte to modul
-        byte_to_port_handling            : out STD_LOGIC_VECTOR(7 downto 0);
-        byte_to_length_handling_high_out : out STD_LOGIC_VECTOR(7 downto 0);
-        byte_to_length_handling_low_out  : out STD_LOGIC_VECTOR(7 downto 0);
-        byte_to_messae_processor_out     : out STD_LOGIC_VECTOR(7 downto 0);
         
+        signal_to_IDLE_out               : out  STD_LOGIC;
+        signal_to_PORT_out               : out  STD_LOGIC;
+        signal_to_LENGTH_out             : out  STD_LOGIC;
+        signal_to_DATA_out               : out  STD_LOGIC;
+        byte_PC_out                      : out  STD_LOGIC_VECTOR(7 downto 0)
     );
     
     
@@ -31,15 +33,16 @@ architecture Behavioral of Input_Controller is
 
     -- define the states
     type state_type is (
-        IDLE,        -- waiting for new_message
-        PORT_BYTE,   -- analysing to wich port the message uses 
-        LENGTH_BYTE, -- analysing the length of the message
-        DATA_BYTES   -- storing the data byres
+        IDLE,   -- waiting for new_message
+        PORTS,  -- analysing to wich port the message uses 
+        LENGTH, -- analysing the length of the message
+        DATA    -- storing the data byres
     );
     
     signal current_state : state_type;
     signal next_state    : state_type;
-    signal length        : STD_LOGIC_VECTOR(15 downto 0);                                
+    signal length_data   : STD_LOGIC_VECTOR(15 downto 0);   
+    signal message_type  : STD_LOGIC_VECTOR(10 downto 0);                         
     
     
     
@@ -66,28 +69,33 @@ begin
             when IDLE =>
             
                 if is_new_message_in = '1' then
-                    next_state <= PORT_BYTE; -- next byte contains port     
+                
+                    next_state <= PORTS;    
+                    
                 end if;
                          
-            when PORT_BYTE =>
+            when PORTS =>
             
-                next_state <= LENGTH_BYTE;
+                next_state <= LENGTH;
                 
-            when LENGTH_BYTE =>
+            when LENGTH =>
             
-                if xxx = '1' then
-                    next_state <= DATA_BYTES;
+                if length_done_in = '1' then
+                    next_state <= DATA;
                 end if;    
                 
-            when DATA_BYTES =>
+            when DATA =>
             
-                if xxx = '1' then
+                if data_done_in = '1' then
                     next_state <= IDLE;
                 end if; 
                 
             when others =>
             
+                next_state <= IDLE;
+                
         end case;
+        
     end process;
 
     -- output logic
@@ -96,26 +104,34 @@ begin
         -- default
            
         case current_state is
-            when IDLE =>
+            when IDLE =>  
             
-                byte_to_new_message_out          <= byte_PC_in;
-                byte_to_message_type_recognition <= byte_PC_in;
-
-            when PORT_BYTE =>
-            
-                byte_to_port_handling            <= byte_PC_in;
-
-            when LENGTH_BYTE =>
-            
-                byte_to_length_handling_high_out <= byte_PC_in;
+                signal_to_DATA_out <= '0';      -- deactivate state DATA
                 
-                byte_to_length_handling_low_out  <= byte_PC_in;
+                signal_to_IDLE_out <= '1';      -- activate state IDLE
+                
+                message_type <= message_type_in;      
 
-            when DATA_BYTES =>
+            when PORTS =>
             
-                byte_to_messae_processor_out     <= byte_PC_in;
+                signal_to_IDLE_out <= '0';      -- deactivate state IDLE 
+                
+                signal_to_PORT_out <= '1';      -- activate state  PORT
+                        
+
+            when LENGTH =>  
+            
+                signal_to_PORT_out <= '0';       -- deactivate state PORT 
+                
+                signal_to_LENGTH_out <= '1';     -- activate state LENGTH         
 
 
+            when DATA =>
+            
+                signal_to_PORT_out <= '0';       -- deactivate state LENGTH 
+                 
+                signal_to_DATA_out <= '1';       -- activate state DATA
+        
             when others =>
                 null;
         end case;

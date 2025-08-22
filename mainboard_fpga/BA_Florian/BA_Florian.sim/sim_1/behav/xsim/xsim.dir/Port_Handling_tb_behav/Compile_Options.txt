@@ -1,0 +1,1 @@
+--incr --debug "typical" --relax --mt "8" -L "xil_defaultlib" -L "secureip" -L "xpm" --snapshot "Port_Handling_tb_behav" "xil_defaultlib.Port_Handling_tb" -log "elaborate.log" 
