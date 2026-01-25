@@ -15,8 +15,8 @@ void setup_hid() {
 }
 
 void scan_hid() {
-  //scan_keyboard();
-  scan_joystick();
+  scan_keyboard();
+  //scan_joystick();
 }
 
 void setup_keyboard_matrix() {

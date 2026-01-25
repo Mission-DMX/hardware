@@ -1,3 +1,6 @@
 [submodule "submodules/MX_Alps_Hybrid"]
 	path = submodules/MX_Alps_Hybrid
 	url = https://github.com/ai03-2725/MX_Alps_Hybrid.git
+[submodule "mainboard-fpga/VexRiscv"]
+	path = mainboard-fpga/VexRiscv
+	url = https://github.com/SpinalHDL/VexRiscv
