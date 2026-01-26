@@ -52,7 +52,8 @@
 --  Output     Output      Phase    Duty Cycle   Pk-to-Pk     Phase
 --   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 ------------------------------------------------------------------------------
--- clk_out_150__150.00000______0.000______50.0______127.220____105.461
+-- clk_out_200__200.00000______0.000______50.0______114.829_____98.575
+-- clk_out_100__100.00000______0.000______50.0______130.958_____98.575
 --
 ------------------------------------------------------------------------------
 -- Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -66,7 +67,8 @@ component clock_generator
 port
  (-- Clock in ports
   -- Clock out ports
-  clk_out_150          : out    std_logic;
+  clk_out_200          : out    std_logic;
+  clk_out_100          : out    std_logic;
   -- Status and control signals
   reset             : in     std_logic;
   locked            : out    std_logic;
@@ -81,7 +83,8 @@ end component;
 your_instance_name : clock_generator
    port map ( 
   -- Clock out ports  
-   clk_out_150 => clk_out_150,
+   clk_out_200 => clk_out_200,
+   clk_out_100 => clk_out_100,
   -- Status and control signals                
    reset => reset,
    locked => locked,

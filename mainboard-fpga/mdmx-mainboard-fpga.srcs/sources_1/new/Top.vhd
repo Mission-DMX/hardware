@@ -9,7 +9,7 @@ entity Top is
         num_dmx_ports : natural := 1
     );
     port (
-        clk_100     : in  STD_LOGIC;   -- 100 MHz
+        clk_sys     : in  STD_LOGIC;   -- 100 MHz
         rst_n   : in  STD_LOGIC;
         dmx_out : out STD_LOGIC_VECTOR(num_dmx_ports - 1 downto 0);
         usb_rx  : in  STD_LOGIC;
@@ -62,8 +62,9 @@ architecture Behavioral of Top is
     --signal fake_data_b   : STD_LOGIC_VECTOR(7 downto 0) := "11110000";
     --signal fake_going_up : std_logic := '1';
     
-    signal internal_rst  : STD_LOGIC;
-    signal clk_150 : STD_LOGIC;
+    signal internal_rst  : STD_ULOGIC;
+    signal clk_100 : STD_ULOGIC;
+    signal clk_200 : STD_ULOGIC;
     
     signal dmx_breaks     : STD_LOGIC_VECTOR(num_dmx_ports - 1 downto 0);
     signal dmx_clocks     : STD_LOGIC_VECTOR(num_dmx_ports - 1 downto 0);
@@ -72,11 +73,12 @@ architecture Behavioral of Top is
     --signal old_dmx_break : STD_LOGIC;
 begin
 
-   clock_manager : entity clock_generator
+   clock_manager : entity work.clock_generator
        port map (
             reset => internal_rst,
-            clk_in1 => clk_100,
-            clk_out_150 => clk_150
+            clk_in1 => clk_sys,
+            clk_out_100 => clk_100,
+            clk_out_200 => clk_200
        );
    
    dmx_ports : for i in 0 to (num_dmx_ports - 1) generate
