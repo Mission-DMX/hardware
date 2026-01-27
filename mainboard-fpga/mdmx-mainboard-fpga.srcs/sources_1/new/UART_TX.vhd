@@ -19,6 +19,8 @@ entity PC_COM_PROTOCOL_HANDLER is
            dmx_mem_read_data_in     : in  std_ulogic_vector(7 downto 0);
            dmx_mem_addr_out         : out std_ulogic_vector(8 downto 0);
            
+           soc_control : out soc_control_bus;
+           
            dmx_port_mode_outs : out DMX_PORT_MODE_ARRAY(dmx_port_count - 1 downto 0);
            
            decoding_error_occurred : out std_ulogic;
@@ -51,6 +53,8 @@ begin
             if reset = '1' then 
                  state <= RESET_STATE;
                  tmp1 <= 0;
+                 soc_control.hold_reset <= '1';
+                 soc_control.mem_write_enable <= '0';
             else  
                 case state is
                     when RESET_STATE =>
@@ -77,6 +81,8 @@ begin
                            tmp1 <= tmp1 + 1;
                         end if;
                         com_data_ready <= '0';
+                        soc_control.hold_reset <= '1';
+                        soc_control.mem_write_enable <= '0';
                     when IDLE =>
                         com_data_ready <= '1';
                         if com_data_in_valid = '1' and com_data_in(6) = '0' then
@@ -130,11 +136,12 @@ begin
                                     tmp1 <= tmp1 + 1;
                                 else
                                     state <= EXEC_COMMAND;
-                                    if command /= WRITE_DMX then
+                                    if command /= WRITE_DMX and command /= WRITE_CPU_MEM then
                                         com_data_ready <= '0';
                                     end if;
                                     arg2(11 downto 6) <= com_data_in(5 downto 0);
                                     tmp1 <= 0;
+                                    tmp2 <= 0;
                                 end if;
                             else
                                 state <= IDLE;
@@ -189,8 +196,37 @@ begin
                                 dmx_modes(to_integer(unsigned(arg1))) <= DISABLED;
                             end case;
                             state <= IDLE;
+                        when SET_CPU_STATE =>
+                            -- arg1(0) is hold_reset
+                            state <= IDLE;
+                            soc_control.hold_reset <= arg1(0);
+                        when WRITE_CPU_MEM =>
+                            -- arg1 is addr(31:20)
+                            -- arg2 is addr(19:8)
+                            -- tmp1 is addr(7:0)
+                            -- tmp2 is read_in_state
+                            soc_control.mem_write_enable <= '0';
+                            if tmp1 > 255 then
+                                state <= IDLE;
+                            end if;
+                            if com_data_in_valid = '1' then
+                                if com_data_in(6) = '1' then
+                                    if tmp2 = 0 then
+                                        soc_control.mem_data(7 downto 4) <= com_data_in(3 downto 0);
+                                    else
+                                        soc_control.mem_write_enable <= '1';
+                                        soc_control.mem_addr <= arg1 & arg2 & std_ulogic_vector(to_unsigned(tmp1, 8));
+                                        soc_control.mem_data(3 downto 0) <= com_data_in(3 downto 0);
+                                        tmp1 <= tmp1 + 1;
+                                        tmp2 <= 0;
+                                    end if;
+                                else
+                                    state <= IDLE;
+                                    decoding_error_occurred <= '1';
+                                end if;
+                            end if;
                         when others =>
-                            -- TODO implement READ_DMX, WRITE_CPU_MEM, SET_CPU_STATE
+                            -- TODO implement READ_DMX, READ_MEM
                             state <= IDLE;
                             decoding_error_occurred <= '1';
                         end case;

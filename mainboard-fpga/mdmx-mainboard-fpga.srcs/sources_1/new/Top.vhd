@@ -18,24 +18,29 @@ entity Top is
         
         -- debug signals
         test_1  : out STD_LOGIC;
-        test_2  : out STD_LOGIC ; 
-        a       : out STD_LOGIC_VECTOR(7 downto 0)
+        test_2  : out STD_LOGIC; 
+        a       : out STD_LOGIC_VECTOR(7 downto 0);
+        
+        -- DDR3 interface
+        ddr3_dq : inout std_logic_vector(15 downto 0);
+        ddr3_dqs_n : inout std_logic_vector(1 downto 0);
+        ddr3_dqs_p : inout std_logic_vector(1 downto 0);
+        ddr3_addr : out std_logic_vector(13 downto 0);
+        ddr3_ba : out std_logic_vector(2 downto 0);
+        ddr3_ras_n : out std_logic;
+        ddr3_cas_n : out std_logic;
+        ddr3_we_n : out std_logic;
+        ddr3_reset_n : out std_logic;
+        ddr3_ck_p : out std_logic;
+        ddr3_ck_n : out std_logic;
+        ddr3_cke : out std_logic;
+        ddr3_cs_n : out std_logic;
+        ddr3_dm : out std_logic_vector(1 downto 0);
+        ddr3_odt : out std_logic
     );
 end Top;
 
 architecture Behavioral of Top is
-
-    component clock_generator
-    port
-     (-- Clock in ports
-      -- Clock out ports
-      clk_out_150          : out    std_logic;
-      -- Status and control signals
-      reset             : in     std_logic;
-      locked            : out    std_logic;
-      clk_in1           : in     std_logic
-     );
-    end component;
 
     -- signale USB UART -> Protocol decoder
     signal com_data_to_protocol_decoder : std_ulogic_vector(7 downto 0);
@@ -52,6 +57,9 @@ architecture Behavioral of Top is
     signal dmx_mem_addr_bus                   : std_ulogic_vector(8 downto 0);
     signal dmx_mem_write_to_port_data_bus     : std_ulogic_vector(7 downto 0);
     signal dmx_mem_read_from_port_data_bus    : std_ulogic_vector(7 downto 0);
+    
+    signal protocol_handler_to_soc_control_bus : soc_control_bus;
+    signal ddr3_bus : ddr3_mem_interface;
     ------------------------------------------------------------------
     -- DMX UART Combo Signale
     -----------------------------------------------------------------       
@@ -63,6 +71,7 @@ architecture Behavioral of Top is
     --signal fake_going_up : std_logic := '1';
     
     signal internal_rst  : STD_ULOGIC;
+    signal clock_locked : std_ulogic;
     signal clk_100 : STD_ULOGIC;
     signal clk_200 : STD_ULOGIC;
     
@@ -77,6 +86,7 @@ begin
        port map (
             reset => internal_rst,
             clk_in1 => clk_sys,
+            locked => clock_locked,
             clk_out_100 => clk_100,
             clk_out_200 => clk_200
        );
@@ -125,6 +135,8 @@ begin
            com_data_in_valid => com_data_to_protocol_decoder_valid,
            com_data_ready => com_data_to_protocol_decoder_ready,
            
+           soc_control => protocol_handler_to_soc_control_bus,
+           
            dmx_port_mode_outs => dmx_port_modes,
            dmx_mem_write_enable_out => dmx_mem_write_enable_bus,
            dmx_mem_read_select_out => dmx_mem_read_select_bus,
@@ -137,8 +149,24 @@ begin
     -- 5️ DMX Output MUX
     -- Break zieht Leitung LOW
     ------------------------------------------------------------------
-    internal_rst <= not rst_n;
+    internal_rst <= (not rst_n) or (not clock_locked);
     --dmx_out <= clk;
     test_1 <= dmx_breaks(0);
+    
+    ddr3_bus.ddr3_dq <= ddr3_dq;
+    ddr3_bus.ddr3_dqs_n <= ddr3_dqs_n;
+    ddr3_bus.ddr3_dqs_p <= ddr3_dqs_p;
+    ddr3_bus.ddr3_addr <= ddr3_addr;
+    ddr3_bus.ddr3_ba <= ddr3_ba;
+    ddr3_bus.ddr3_ras_n <= ddr3_ras_n;
+    ddr3_bus.ddr3_cas_n <= ddr3_cas_n;
+    ddr3_bus.ddr3_we_n <= ddr3_we_n;
+    ddr3_bus.ddr3_reset_n <= ddr3_reset_n;
+    ddr3_bus.ddr3_ck_p <= ddr3_ck_p;
+    ddr3_bus.ddr3_ck_n <= ddr3_ck_n;
+    ddr3_bus.ddr3_cke <= ddr3_cke;
+    ddr3_bus.ddr3_cs_n <= ddr3_cs_n;
+    ddr3_bus.ddr3_dm <= ddr3_dm;
+    ddr3_bus.ddr3_odt <= ddr3_odt;
     
 end Behavioral;
