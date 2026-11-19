@@ -36,7 +36,16 @@ entity Top is
         ddr3_cke : out std_logic;
         ddr3_cs_n : out std_logic;
         ddr3_dm : out std_logic_vector(1 downto 0);
-        ddr3_odt : out std_logic
+        ddr3_odt : out std_logic;
+        
+        ft600_clk : in std_ulogic;           -- Ft 100MHz clock
+        ft600_rxf : in std_ulogic;           -- Ft Rx Full (0 = data in rx buffer)
+        ft600_txe : in std_ulogic;           -- Ft Tx Empty (0 = space in tx buffer)
+        ft600_data : inout std_ulogic_vector(15 downto 0);      -- Ft data bus
+        ft600_be : inout std_ulogic_vector(1 downto 0);         -- Ft byte enable
+        ft600_rd : out std_ulogic;           -- Ft read flag (0 = read)
+        ft600_wr : out std_ulogic;           -- Ft write flag (0 = write)
+        ft600_oe : out std_ulogic            -- Ft output enable (0 = Ft, 1 = FPGA drives bus)
     );
 end Top;
 

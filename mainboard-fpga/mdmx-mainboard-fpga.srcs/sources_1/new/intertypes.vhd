@@ -80,4 +80,33 @@ package intertypes is
         -- On-Die Termination (ODT)
         ddr3_odt       : std_logic;
     end record;
+    
+    type jtag_wire is record
+        tms : std_ulogic;
+        tdi : std_ulogic;
+        tdo : std_ulogic;
+        tck : std_ulogic;
+        rst : std_ulogic;
+    end record;
+    
+    type mem_read_interface is record
+        cmd_src_valid : std_ulogic;
+        cmd_dst_ready : std_ulogic;
+        cmd_payload_address : std_ulogic_vector(31 downto 0);
+        cmd_payload_io : std_ulogic;
+        rsp_dst_valid : std_ulogic;
+        rsp_src_ready : std_ulogic;
+        rsp_payload_data : std_ulogic_vector(31 downto 0);
+        rsp_payload_error : std_ulogic;
+    end record;
+    
+    type mem_write_interface is record
+        cmd_src_valid : std_ulogic;
+        cmd_dst_ready : std_ulogic;
+        cmd_payload_last : std_ulogic;
+        cmd_payload_fragment_address : std_ulogic_vector(31 downto 0);
+        cmd_payload_fragment_data : std_ulogic_vector(31 downto 0);
+        rsp_dst_valid : std_ulogic;
+        rsp_payload_error : std_ulogic;
+    end record;
 end package intertypes;
